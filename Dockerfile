@@ -1,17 +1,19 @@
-# Використовуємо Python 3.12 як базовий образ
 FROM python:3.12-slim
 
-# Встановлюємо робочу директорію
+# Встановлюємо git
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
+# Робоча директорія
 WORKDIR /app
 
-# Копіюємо файли в контейнер
+# Копіюємо файли
 COPY . .
 
-# Встановлюємо всі залежності з requirements.txt
+# Встановлюємо залежності
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Відкриваємо порт 5000 для веб-додатку
+# Вказуємо порт
 EXPOSE 5000
 
-# Запускаємо Flask додаток
+# Команда для запуску Flask
 CMD ["python", "web/app.py"]
