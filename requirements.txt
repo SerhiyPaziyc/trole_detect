@@ -1,6 +1,6 @@
-flask
-torch
+Flask
 transformers
-detoxify
+torch
+numpy
 scikit-learn
-nltk
+git+https://github.com/unitaryai/detoxify.git
